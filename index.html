@@ -120,16 +120,17 @@
     </form>
 
     <script type="text/javascript">
-        function getQueryParam(param) {
-            var urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+         function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
-
         function launchChatbot() {
             // Retrieve the ticket ID from the URL query parameters
-            var ticketId = getQueryParam('ticketId');
-            // Set the ticketId value to the hidden input field
-            document.getElementById("ticketId").value = ticketId;
+            var ticketId = getParameterByName('ticketId');
             var overallSatisfaction = document.getElementById("overallSatisfaction").value;
             var overallExperience = document.getElementById("overallExperience").value;
             var productQuality = document.getElementById("productQuality").value;
