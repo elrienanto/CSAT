@@ -120,7 +120,16 @@
     </form>
 
     <script type="text/javascript">
+        function getQueryParam(param) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
         function launchChatbot() {
+            // Retrieve the ticket ID from the URL query parameters
+            var ticketId = getQueryParam('ticketId');
+            // Set the ticketId value to the hidden input field
+            document.getElementById("ticketId").value = ticketId;
             var overallSatisfaction = document.getElementById("overallSatisfaction").value;
             var overallExperience = document.getElementById("overallExperience").value;
             var productQuality = document.getElementById("productQuality").value;
@@ -168,7 +177,7 @@
                     "concerns_satisfaction": concernsSatisfaction,
                     "liked_aspects": likedAspects,
                     "improvement_suggestions": improvementSuggestions,
-                    "ticketId": "100002"
+                    "ticketId": ticketId
                 }
             };
         //      function getQueryParam(param) {
