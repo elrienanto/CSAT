@@ -214,6 +214,10 @@
         // to handle failure CSAT input
         if(eventData.event_code == "message-received" && (eventData.data == "Failure"))
         alert("FAILURE!! Please try again!");
+
+         if(eventData.event_code == "message-received" && (eventData.data == "Already Filled CSAT")) {
+            alert("You Have Responded the CSAT for this ticket!!");
+        }
     });
     </script>
 </body>
