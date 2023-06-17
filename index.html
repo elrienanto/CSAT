@@ -202,93 +202,7 @@
                 }
             })();
         }
-            var ticketIdElement = document.getElementById("ticketId");
-            ticketIdElement.innerText = ticketId;
-        
-// <!--     <script type="text/javascript">
-//          function getParameterByName(name) {
-//             name = name.replace(/[\[\]]/g, '\\$&');
-//             var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-//                 results = regex.exec(window.location.href);
-//             if (!results) return null;
-//             if (!results[2]) return '';
-//             return decodeURIComponent(results[2].replace(/\+/g, ' '));
-//         }
-
-//         function launchChatbot() {
-//             // Retrieve the ticket ID from the URL query parameters
-//             var ticketId = getParameterByName('ticketId');
-//             var overallSatisfaction = document.getElementById("overallSatisfaction").value;
-//             var overallExperience = document.getElementById("overallExperience").value;
-//             var productQuality = document.getElementById("productQuality").value;
-//             var meetExpectations = document.getElementById("meetExpectations").value;
-//             var customerSupport = document.getElementById("customerSupport").value;
-//             var timelyManner = document.getElementById("timelyManner").value;
-//             var easeOfUse = document.getElementById("easeOfUse").value;
-//             var difficulties = document.getElementById("difficulties").value;
-//             var valueForMoney = document.getElementById("valueForMoney").value;
-//             var reasonablyPriced = document.getElementById("reasonablyPriced").value;
-//             var likelihoodRecommend = document.getElementById("likelihoodRecommend").value;
-//             var referCompany = document.getElementById("referCompany").value;
-//             var purchaseExperience = document.getElementById("purchaseExperience").value;
-//             var orderProcess = document.getElementById("orderProcess").value;
-//             var deliveryTimeliness = document.getElementById("deliveryTimeliness").value;
-//             var satisfiedDelivery = document.getElementById("satisfiedDelivery").value;
-//             var problemResolution = document.getElementById("problemResolution").value;
-//             var concernsSatisfaction = document.getElementById("concernsSatisfaction").value;
-//             var likedAspects = document.getElementById("likedAspects").value;
-//             var improvementSuggestions = document.getElementById("improvementSuggestions").value;
-
-//             window.ymConfig = {
-//                 "bot": "x1683541740113",
-//                 "host": "https://r3.cloud.yellow.ai",
-//                 "hideChatButton": "true",
-//                 triggerJourney: "store-csat_tpivjs",
-//                 "payload": {
-//                     "overall_satisfaction": overallSatisfaction,
-//                     "overall_experience": overallExperience,
-//                     "product_quality": productQuality,
-//                     "meet_expectations": meetExpectations,
-//                     "customer_support": customerSupport,
-//                     "timely_manner": timelyManner,
-//                     "ease_of_use": easeOfUse,
-//                     "difficulties": difficulties,
-//                     "value_for_money": valueForMoney,
-//                     "reasonably_priced": reasonablyPriced,
-//                     "likelihood_recommend": likelihoodRecommend,
-//                     "refer_company": referCompany,
-//                     "purchase_experience": purchaseExperience,
-//                     "order_process": orderProcess,
-//                     "delivery_timeliness": deliveryTimeliness,
-//                     "satisfied_delivery": satisfiedDelivery,
-//                     "problem_resolution": problemResolution,
-//                     "concerns_satisfaction": concernsSatisfaction,
-//                     "liked_aspects": likedAspects,
-//                     "improvement_suggestions": improvementSuggestions,
-//                     "ticketId": ticketId
-//                 }
-//             };
-      
-//             (function () {
-//                 var w = window,
-//                     ic = w.YellowMessenger;
-//                 if ("function" === typeof ic)
-//                     ic("reattach_activator"), ic("update", ymConfig);
-//                 else {
-//                     var d = document,
-//                         i = function () {
-//                             i.c(arguments)
-//                         };
-//                     i.q = [], i.c = function (e) {
-//                         i.q.push(e)
-//                     }, w.YellowMessenger = i;
-//                     var e = d.createElement("script");
-//                     e.type = "text/javascript", e.async = !0, e.src = "https://cdn.yellowmessenger.com/plugin/widget-v2/latest/dist/main.min.js";
-//                     var t = d.getElementsByTagName("script")[0];
-//                     t.parentNode.insertBefore(e, t);
-//                 }
-//             })();
-//         } -->
+                    
         window.addEventListener('message', function(eventData) {
         eventData = JSON.parse(eventData.data)
         console.log(eventData, "eventData"); //Check incoming eventData
@@ -302,7 +216,8 @@
         if(eventData.event_code == "message-received" && (eventData.data == "Failure"))
         alert("FAILURE!! Please try again!");
 
-         if(eventData.event_code == "message-received" && (eventData.data == "Already Filled CSAT")) {
+        // to handle double CSAT input
+        if(eventData.event_code == "message-received" && (eventData.data == "Already Filled CSAT")) {
             alert("You Have Responded the CSAT for this ticket!!");
         }
     });
